@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="VBA Codify style.css"/>
+		<script src="codemirror/lib/codemirror.js"></script>
+		<link href="codemirror/lib/codemirror.css" rel="stylesheet"/>
+		<script src="codemirror/mode/vb/vb.js"></script>
+		<link href="codemirror/theme/idea.css" rel="stylesheet"/>
+		<link href="codemirror/theme/dracula.css" rel="stylesheet"/>
+		<script>
+		function allowDrop(ev) {
+		  ev.preventDefault();
+		}
+		function drag(ev) {
+		var text = ev.target.dataset.text
+		  ev.dataTransfer.setData("text", text);
+		}
+		function drop(ev) {
+		  ev.preventDefault();
+		  var data = ev.dataTransfer.getData("text");
+		  ev.target.appendChild(document.getelementbyId(data));
+		}
+		function b1_click() {
+		var x = event.button;
+		if (x === 2) {
+			buildmodal.style.display = "block";
+			premademodal.style.display = "none";
+			cellmodal.style.display = "none";
+			ifmodal.style.display = "none";
+			loopsmodal.style.display = "none";
+			copypastemodal.style.display = "none";
+			speedmodal.style.display = "none";
+			specialmodal.style.display = "none";
+			formulasmodal.style.display = "none";
+			combinationsmodal.style.display = "none";
+			droppables.style.display = "none";
+		} else {
+		document.getElementById("b2").style.background = "white";
+		document.getElementById("b1").style.background = "#b50002";
+		dropdowns1.style.display = "block";
+		dropdowns2.style.display = "none";
+			brsheet.style.display = "none";
+			brworkbook.style.display = "none"
+			brfolder.style.display = "none"
+			columnequals.style.display = "none"
+			createsheets.style.display = "none"
+			}
+		}
+		function b2_click() {
+		var x = event.button;
+		if (x === 2) {
+			premademodal.style.display = "block";
+			buildmodal.style.display = "none";
+			cellmodal.style.display = "none";
+			ifmodal.style.display = "none";
+			loopsmodal.style.display = "none";
+			copypastemodal.style.display = "none";
+			speedmodal.style.display = "none";
+			specialmodal.style.display = "none";
+			formulasmodal.style.display = "none";
+			combinationsmodal.style.display = "none";
+			droppables.style.display = "none";
+		} else {
+		document.getElementById("b1").style.background = "white";
+		document.getElementById("b2").style.background = "#b50002";
+		dropdowns1.style.display = "none";
+		dropdowns2.style.display = "block";
+			screentrue.style.display = "none";
+			combowith.style.display = "none";
+			screenfalse.style.display = "none";
+			lcol.style.display = "none";
+			withinsheet.style.display = "none";
+			betweensheets.style.display = "none";
+			betweenworkbooks.style.display = "none";
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			whileloop.style.display = "none"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			blue.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			combos.style.display = "none"
+			red.style.display = "none"
+			lcol.style.display = "none"
+			lrow.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			combo1.style.display = "none";
+		}
+}		
+		function cell_formatting_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "block";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "none";
+				loopsmodal.style.display = "none";
+				copypastemodal.style.display = "none";
+				speedmodal.style.display = "none";
+				specialmodal.style.display = "none";
+				formulasmodal.style.display = "none";
+				combinationsmodal.style.display = "none";
+				droppables.style.display = "none";
+		  } else {
+		  var x = document.getElementById("font");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			format.style.display = "block"
+			color.style.display = "block"
+			combowith.style.display = "block"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			whileloop.style.display = "none"
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			withinsheet.style.display = "none"
+			betweensheets.style.display = "none"
+			betweenworkbooks.style.display = "none"
+			percentage.style.display = "none"
+			lcol.style.display = "none"
+			lrow.style.display = "none"
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			screentrue.style.display = "none"
+			screenfalse.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			combo1.style.display = "none";
+		  } else {
+			x.style.display = "none";
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			blue.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			red.style.display = "none"
+			combos.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+				}
+			}
+		}
+		function if_statements_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "none";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "block";
+				loopsmodal.style.display = "none";
+				copypastemodal.style.display = "none";
+				speedmodal.style.display = "none";
+				specialmodal.style.display = "none";
+				formulasmodal.style.display = "none";
+				combinationsmodal.style.display = "none";
+				droppables.style.display = "none";
+		  } else {
+		  var x = document.getElementById("simpleif");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			ifand.style.display = "block"
+			ifor.style.display = "block"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			blue.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			red.style.display = "none"
+			combos.style.display = "none"
+			whileloop.style.display = "none"
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			withinsheet.style.display = "none"
+			betweensheets.style.display = "none"
+			betweenworkbooks.style.display = "none"
+			lcol.style.display = "none"
+			lrow.style.display = "none"
+			screentrue.style.display = "none"
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			screenfalse.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			combo1.style.display = "none";
+		  } else {
+			x.style.display = "none";
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+		  }
+		}
+	}
+		function loops_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "none";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "none";
+				loopsmodal.style.display = "block";
+				copypastemodal.style.display = "none";
+				speedmodal.style.display = "none";
+				specialmodal.style.display = "none";
+				formulasmodal.style.display = "none";
+				combinationsmodal.style.display = "none";
+				droppables.style.display = "none";
+			} else {
+		  var x = document.getElementById("forloop");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			loopsheets.style.display = "block"
+			whileloop.style.display = "block"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			blue.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			red.style.display = "none"
+			combos.style.display = "none"
+			withinsheet.style.display = "none"
+			betweensheets.style.display = "none"
+			betweenworkbooks.style.display = "none"
+			lcol.style.display = "none"
+			lrow.style.display = "none"
+			screentrue.style.display = "none"
+			screenfalse.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			combo1.style.display = "none";
+		  } else {
+			x.style.display = "none";
+			whileloop.style.display = "none"
+			loopsheets.style.display = "none"
+		  }
+		}
+	}
+		
+		function copy_paste_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "none";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "none";
+				loopsmodal.style.display = "none";
+				copypastemodal.style.display = "block";
+				speedmodal.style.display = "none";
+				specialmodal.style.display = "none";
+				formulasmodal.style.display = "none";
+				combinationsmodal.style.display = "none";
+				droppables.style.display = "none";
+			} else {
+		  var x = document.getElementById("withinsheet");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			betweensheets.style.display = "block";
+			betweenworkbooks.style.display = "block";
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			whileloop.style.display = "none"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			blue.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			red.style.display = "none"
+			combos.style.display = "none"
+			lcol.style.display = "none"
+			lrow.style.display = "none"
+			screentrue.style.display = "none"
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			screenfalse.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			combo1.style.display = "none";
+		  } else {
+			x.style.display = "none";
+			betweenworkbooks.style.display = "none"
+			betweensheets.style.display = "none"
+		  }
+		}
+	}
+		function essentials_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "none";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "none";
+				loopsmodal.style.display = "none";
+				copypastemodal.style.display = "none";
+				speedmodal.style.display = "none";
+				specialmodal.style.display = "block";
+				formulasmodal.style.display = "none";
+				combinationsmodal.style.display = "none";
+				droppables.style.display = "none";
+			} else {
+		  var x = document.getElementById("lrow");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			lcol.style.display = "block";
+			removeduplicates.style.display = "block"
+			removeduplicates2.style.display = "block"
+			withinsheet.style.display = "none";
+			betweensheets.style.display = "none";
+			betweenworkbooks.style.display = "none";
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			whileloop.style.display = "none"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			blue.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			red.style.display = "none"
+			combos.style.display = "none"
+			screentrue.style.display = "none"
+			screenfalse.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			combo1.style.display = "none";
+		  } else {
+			x.style.display = "none";
+			lcol.style.display = "none"
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+		  }
+		}
+	}
+		function speed_enhancements_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "none";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "none";
+				loopsmodal.style.display = "none";
+				copypastemodal.style.display = "none";
+				speedmodal.style.display = "block";
+				specialmodal.style.display = "none";
+				formulasmodal.style.display = "none";
+				combinationsmodal.style.display = "none";
+				droppables.style.display = "none";
+			} else {
+		  var x = document.getElementById("screenfalse");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			screentrue.style.display = "block";
+			lcol.style.display = "block";
+			withinsheet.style.display = "none";
+			betweensheets.style.display = "none";
+			betweenworkbooks.style.display = "none";
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			whileloop.style.display = "none"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			blue.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			combos.style.display = "none"
+			red.style.display = "none"
+			lcol.style.display = "none"
+			lrow.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			combo1.style.display = "none";
+		  } else {
+			x.style.display = "none";
+			screentrue.style.display = "none"
+		  }
+		}
+	}
+		function combinations_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "none";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "none";
+				loopsmodal.style.display = "none";
+				copypastemodal.style.display = "none";
+				speedmodal.style.display = "none";
+				specialmodal.style.display = "none";
+				formulasmodal.style.display = "none";
+				combinationsmodal.style.display = "block";
+				droppables.style.display = "none";
+			} else {
+		  var x = document.getElementById("combo1");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			screentrue.style.display = "none";
+			lcol.style.display = "none";
+			withinsheet.style.display = "none";
+			betweensheets.style.display = "none";
+			betweenworkbooks.style.display = "none";
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			whileloop.style.display = "none"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			blue.style.display = "none"
+			combos.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			red.style.display = "none"
+			lcol.style.display = "none"
+			lrow.style.display = "none"
+			vlookup.style.display = "none"
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			screentrue.style.display = "none"
+			screenfalse.style.display = "none"
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+	}
+		function formulas_click() {
+			var y = event.button;
+			if (y === 2) {
+				cellmodal.style.display = "none";
+				premademodal.style.display = "none";
+				buildmodal.style.display = "none";
+				ifmodal.style.display = "none";
+				loopsmodal.style.display = "none";
+				copypastemodal.style.display = "none";
+				speedmodal.style.display = "none";
+				specialmodal.style.display = "none";
+				formulasmodal.style.display = "block";
+				combinationsmodal.style.display = "none";
+				droppables.style.display = "none";
+			} else {
+		  var x = document.getElementById("vlookup");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			myif.style.display = "block";
+			match.style.display = "block";
+			sumifs.style.display = "block";
+			indexmatch.style.display = "block";
+			indexmatchmatch.style.display = "block";
+			screentrue.style.display = "none";
+			lcol.style.display = "none";
+			withinsheet.style.display = "none";
+			betweensheets.style.display = "none";
+			betweenworkbooks.style.display = "none";
+			forloop.style.display = "none"
+			loopsheets.style.display = "none"
+			whileloop.style.display = "none"
+			simpleif.style.display = "none"
+			ifand.style.display = "none"
+			ifor.style.display = "none"
+			font.style.display = "none"
+			format.style.display = "none"
+			color.style.display = "none"
+			combowith.style.display = "none";
+			italics.style.display = "none"
+			underline.style.display = "none"
+			type.style.display = "none"
+			bold.style.display = "none"
+			size.style.display = "none"
+			date.style.display = "none"
+			number.style.display = "none"
+			color1.style.display = "none"
+			usd.style.display = "none"
+			percentage.style.display = "none"
+			blue.style.display = "none"
+
+			combos.style.display = "none"
+			green.style.display = "none"
+			black.style.display = "none"
+			red.style.display = "none"
+			lcol.style.display = "none"
+			removeduplicates.style.display = "none"
+			removeduplicates2.style.display = "none"
+			lrow.style.display = "none"
+			screenfalse.style.display = "none"
+			combo1.style.display = "none";
+		  } else {
+			x.style.display = "none";
+			myif.style.display = "none";
+			match.style.display = "none";
+			sumifs.style.display = "none";
+			indexmatch.style.display = "none";
+			indexmatchmatch.style.display = "none";
+		  }
+		}
+	}
+		function delete_blank_rows_click() {
+		  var x = document.getElementById("brsheet");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			brworkbook.style.display = "block";
+			brfolder.style.display = "block"
+			columnequals.style.display = "block"
+			createsheets.style.display = "none"
+
+		  } else {
+			x.style.display = "none";
+			brworkbook.style.display = "none"
+			brfolder.style.display = "none"
+			columnequals.style.display = "none"
+		  }
+		}
+		function common_click() {
+		  var x = document.getElementById("createsheets");
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+			brworkbook.style.display = "none";
+			brfolder.style.display = "none"
+			columnequals.style.display = "none"
+			brsheet.style.display = "none"
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+
+		function font_click() {
+		document.getElementById("font").style.display = "block";
+		document.getElementById("format").style.display = "block";
+		document.getElementById("color").style.display = "block";
+		document.getElementById("bold").style.display = "block";
+		document.getElementById("italics").style.display = "block";
+		document.getElementById("underline").style.display = "block";
+		document.getElementById("type").style.display = "block";
+		document.getElementById("size").style.display = "block";
+		document.getElementById("color1").style.display = "block";
+		document.getElementById("date").style.display = "none";
+		document.getElementById("number").style.display = "none";
+		document.getElementById("usd").style.display = "none";
+		document.getElementById("percentage").style.display = "none";
+		document.getElementById("blue").style.display = "none";
+		document.getElementById("black").style.display = "none";
+		document.getElementById("green").style.display = "none";
+		document.getElementById("red").style.display = "none";
+		document.getElementById("combos").style.display = "none";
+		}
+		function number_click() {
+		document.getElementById("font").style.display = "block";
+		document.getElementById("format").style.display = "block";
+		document.getElementById("color").style.display = "block";
+		document.getElementById("date").style.display = "block";
+		document.getElementById("number").style.display = "block";
+		document.getElementById("usd").style.display = "block";
+		document.getElementById("percentage").style.display = "block";
+		document.getElementById("blue").style.display = "none";
+		document.getElementById("black").style.display = "none";
+		document.getElementById("green").style.display = "none";
+		document.getElementById("red").style.display = "none";
+		document.getElementById("bold").style.display = "none";
+		document.getElementById("italics").style.display = "none";
+		document.getElementById("underline").style.display = "none";
+		document.getElementById("type").style.display = "none";
+		document.getElementById("size").style.display = "none";
+		document.getElementById("color1").style.display = "none";
+		document.getElementById("combos").style.display = "none";
+		}
+		function color_click() {
+		document.getElementById("font").style.display = "block";
+		document.getElementById("format").style.display = "block";
+		document.getElementById("color").style.display = "block";
+		document.getElementById("date").style.display = "none";
+		document.getElementById("number").style.display = "none";
+		document.getElementById("usd").style.display = "none";
+		document.getElementById("percentage").style.display = "none";
+		document.getElementById("blue").style.display = "block";
+		document.getElementById("black").style.display = "block";
+		document.getElementById("green").style.display = "block";
+		document.getElementById("red").style.display = "block";
+		document.getElementById("bold").style.display = "none";
+		document.getElementById("italics").style.display = "none";
+		document.getElementById("underline").style.display = "none";
+		document.getElementById("type").style.display = "none";
+		document.getElementById("size").style.display = "none";
+		document.getElementById("color1").style.display = "none";
+		document.getElementById("combos").style.display = "none";
+		}
+		function with_click() {
+		document.getElementById("combos").style.display = "block";
+		document.getElementById("font").style.display = "block";
+		document.getElementById("format").style.display = "block";
+		document.getElementById("color").style.display = "block";
+		document.getElementById("date").style.display = "none";
+		document.getElementById("number").style.display = "none";
+		document.getElementById("usd").style.display = "none";
+		document.getElementById("percentage").style.display = "none";
+		document.getElementById("blue").style.display = "none";
+		document.getElementById("black").style.display = "none";
+		document.getElementById("green").style.display = "none";
+		document.getElementById("red").style.display = "none";
+		document.getElementById("bold").style.display = "none";
+		document.getElementById("italics").style.display = "none";
+		document.getElementById("underline").style.display = "none";
+		document.getElementById("type").style.display = "none";
+		document.getElementById("size").style.display = "none";
+		document.getElementById("color1").style.display = "none";
+		}
+		
+		function closeme() {
+			buildmodal.style.display = "none";
+			premademodal.style.display = "none";
+			cellmodal.style.display = "none";
+			ifmodal.style.display = "none";
+			loopsmodal.style.display = "none";
+			copypastemodal.style.display = "none";
+			speedmodal.style.display = "none";
+			specialmodal.style.display = "none";
+			formulasmodal.style.display = "none";
+			combinationsmodal.style.display = "none";
+			droppables.style.display = "block";
+		}
+
+	
+
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="menu">
+				<div id="top-menu">
+					<div id="modals">
+						<div id="buildmodal" class="modals" style="display: none;">
+							<div id="sink">
+								<h1 class="header">Build<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Build contains eight dropdowns with code snippets that allow you to drag and drop into the text area here.</p>
+								<h3 class="subheader1">Delete Rows If</h3>
+								<p class="paragraph1">Allows you to delete rows in your sheet, workbook, and/or folder based on certain criteria.</p>
+								<h3 class="subheader2">Common</h3>
+								<p class="paragraph2">Contains code for common tedious tasks that professionals will encounter.</p>
+								<h3 class="subheader3">Excel to PowerPoint</h3>
+								<p class="paragraph3">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+								<h3 class="subheader4">Excel to Email</h3>
+								<p class="paragraph4">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+								<h3 class="subheader5">Delete Rows If</h3>
+								<p class="paragraph5">Allows you to delete rows in your sheet, workbook, and/or folder based on certain criteria.</p>
+								<h3 class="subheader6">Common</h3>
+								<p class="paragraph6">Contains code for common tedious tasks that professionals will encounter.</p>
+								<h3 class="subheader7">Excel to PowerPoint</h3>
+								<p class="paragraph7">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+								<h3 class="subheader8">Excel to Email</h3>
+								<p class="paragraph8">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+								
+							</div>
+						</div>
+						<div id="premademodal" class="modals" style="display: none;">
+							<div id="sink1">
+								<button id="b4" class="close" onclick="closeme()">Close</button>
+								<h1 class="header">Premade<hr></h1>
+								<p class="paragraph0">Build contains eight dropdowns with code snippets that allow you to drag and drop into the text area here.</p>
+								<h3 class="subheader1">Delete Rows If</h3>
+								<p class="paragraph1">Allows you to delete rows in your sheet, workbook, and/or folder based on certain criteria.</p>
+								<h3 class="subheader2">Common</h3>
+								<p class="paragraph2">Contains code for common tedious tasks that professionals will encounter.</p>
+								<h3 class="subheader3">Excel to PowerPoint</h3>
+								<p class="paragraph3">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+								<h3 class="subheader4">Excel to Email</h3>
+								<p class="paragraph4">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+								<h3 class="subheader5">Delete Rows If</h3>
+								<p class="paragraph5">Allows you to delete rows in your sheet, workbook, and/or folder based on certain criteria.</p>
+								<h3 class="subheader6">Common</h3>
+								<p class="paragraph6">Contains code for common tedious tasks that professionals will encounter.</p>
+								<h3 class="subheader7">Excel to PowerPoint</h3>
+								<p class="paragraph7">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+								<h3 class="subheader8">Excel to Email</h3>
+								<p class="paragraph8">Premade contains four dropdowns with code snippets that accomplish common tasks in day to day jobs.</p>
+							</div>
+						</div>
+						<div id="cellmodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">Cell Formatting<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">
+									Contains three dropdowns: Font, Format, Color, and With. Each dropdown allows you to manipulate cell properties with VBA.
+									<br>A common practice when manipulating multiple characteristics of a cell or range is to use the "With" statement.
+									<br>With Statements are the most effective way to format a cell or range. Below is an example of two codes. The first does
+									<br>not use a With Statement, but the second one does. Each code does the same thing.
+								</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+
+						<div id="ifmodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">If Statements<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Contains three dropdowns: Font, Format, and Color.<br>Each dropdown allows you to manipulate a cell with VBA.</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+						<div id="loopsmodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">Loops<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Contains three dropdowns: Font, Format, and Color.<br>Each dropdown allows you to manipulate a cell with VBA.</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+						<div id="copypastemodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">Copy/Paste<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Contains three dropdowns: Font, Format, and Color.<br>Each dropdown allows you to manipulate a cell with VBA.</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+						<div id="speedmodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">Speed Enhancements<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Contains three dropdowns: Font, Format, and Color.<br>Each dropdown allows you to manipulate a cell with VBA.</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+						<div id="specialmodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">Special<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Contains three dropdowns: Font, Format, and Color.<br>Each dropdown allows you to manipulate a cell with VBA.</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+						<div id="formulasmodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">Formulas<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Contains three dropdowns: Font, Format, and Color.<br>Each dropdown allows you to manipulate a cell with VBA.</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+						<div id="combinationsmodal" class="modals" style="display: none;">
+							<div id="sink2">
+								<h1 class="header">Combinations<hr></h1>
+								<button	id="b3" class="close" onclick="closeme()">Close</button>
+								<p class="paragraph0">Contains three dropdowns: Font, Format, and Color.<br>Each dropdown allows you to manipulate a cell with VBA.</p>
+								<div class="code1">
+									<textarea  name="textarea-name" class="cfnormal" id="cf1" style="white-space: nowrap;" cols="60" rows="10">Sub Format_Normal()
+Range("A1").Font.Bold = True
+Range("A1").Font.Underline = True
+Range("A1").Font.Name = "Calibri"
+Range("A1").Font.Color = RGB(0,0,0)
+Range("A1").NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+Range("A1").Interior.Color = RGB(0,0,255)									
+End Sub</textarea>
+								</div>
+								<div class="code2">
+									<textarea name="textarea-name" class="cfnormal" id="cf2" style="white-space: nowrap;" cols="60" rows="10">Sub Format_With()
+With Range("A1")
+    .Font.Bold = False
+    .Font.Underline = False
+    .Font.Name = "Arial"
+    .Font.Color = RGB(255,255,255)
+    .NumberFormat = "_(* #,##0_);_(* (#,##0);_(* ""-""??_);_(@_)"
+    .Interior.Color = RGB(0,0,0)
+End With
+End Sub</textarea>
+								</div>
+								<iframe src="https://giphy.com/embed/L3QaFn3WOK3piycFHx"" class="tube1" style="pointer-events: none;"></iframe>
+							</div>
+						</div>
+					</div>
+					<div id="firstchoice" class="btn-group">
+						<button id="b1" style="width:45%" onmousedown="b1_click()" onclick="closeme()" oncontextmenu="return false;">Build</button>
+						<button id="b2" style="width:45%" onmousedown="b2_click()" onclick="closeme()" oncontextmenu="return false;">Premade</button>
+					</div>
+				</div>
+				<div id="dropdowns">
+					<div id="dropdowns1" class="btn-group2" style="display: block">
+						<button id="cell_formatting" class="btn-group2" onmousedown="cell_formatting_click()" onclick="closeme()" oncontextmenu="return false;" style="width:100%; margin-top:5px;">Cell Formatting</button>
+							<button id="font" class="btn-group3" onclick="font_click()" style="width:80%; margin-top:5px; margin-left: 10px; display: none; color: white; background-color:black; border: 1px solid #b50002">Font</button>
+								<button id="bold" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Bold the font in cell A1
+Range(&quot;A1&quot;).Font.Bold = True
+">Bold</button>
+								<button id="italics" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)"data-text="'Italicize the font in range A1:A10
+Range(&quot;A1&quot;:&quot;A10&quot;).Font.Italic = True
+">Italics</button>
+								<button id="underline" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Underline the font in cell A1
+Range(&quot;A1&quot;).Font.Underline = True
+">Underline</button>
+								<button id="type" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Change the font type of cell A1
+Range(&quot;A1&quot;).Font.Name = &quot;Calibri&quot;
+">Type</button>
+								<button id="size" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Change the font size of cell A1
+Range(&quot;A1&quot;).Font.Size = 16
+">Size</button>
+								<button id="color1" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Change the font color of cell A1 black
+Range(&quot;A1&quot;).Font.Color = RGB(0,0,0)
+">Color</button>
+							<button id="format" class="btn-group3" onclick="number_click()" style="width:80%; margin-top:5px; margin-left: 10px; display: none; color: white; background-color:black; border: 1px solid #b50002">Format</button>
+								<button id="date" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)"  data-text="'Format Cell A1 to a Date
+Range(&quot;A1&quot;).NumberFormat = &quot;dd/mm/yy&quot;
+">Date</button>
+								<button id="number" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Format Cell A1 to a Number
+Range(&quot;A1&quot;).NumberFormat = &quot;_(* #,##0_);_(* (#,##0);_(* &quot;&quot;-&quot;&quot;??_);_(@_)&quot;
+">Number</button>
+								<button id="usd" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Format Cell A1 to USD
+Range(&quot;A1&quot;).NumberFormat = &quot;_($* #,##0_);_($* (#,##0);_($* &quot;&quot;-&quot;&quot;??_);_(@_)&quot;
+">USD</button>
+								<button id="percentage" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Format Cell A1 to a Percentage
+Range(&quot;A1&quot;).NumberFormat = &quot;0.0%&quot;
+">Percentage</button>
+							<button id="color" class="btn-group3" onclick="color_click()" style="width:80%; margin-top:5px; margin-left: 10px; display: none; color: white; background-color:black; border: 1px solid #b50002">Color</button>
+								<button id="black" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Make the cell color of A1 Black
+Range(&quot;A1&quot;).Interior.Color = RGB(0,0,0)
+">Black</button>
+								<button id="blue" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Make the cell color of A1 Blue
+Range(&quot;A1&quot;).Interior.Color = RGB(0,0,255)
+">Blue</button>
+								<button id="green" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Make the cell color of A1 Green
+Range(&quot;A1&quot;).Interior.Color = RGB(0,255,0)
+">Green</button>
+								<button id="red" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Make the cell color of A1 Red
+Range(&quot;A1&quot;).Interior.Color = RGB(255,0,0)
+">Red</button>
+							<button id="combowith" class="btn-group3" onclick="with_click()" style="width:80%; margin-top:5px; margin-left: 10px; display: none; color: white; background-color:black; border: 1px solid #b50002">With Statement</button>
+								<button id="combos" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Uses a With Statement to efficiently format a cell
+With Range(&quot;A1&quot;)
+	.Font.Bold = True
+	.Font.Underline = True
+	.Font.Name = &quot;Calibri&quot;
+	.Font.Color = RGB(0,0,0)
+	.NumberFormat = &quot;_(* #,##0_);_(* (#,##0);_(* &quot;&quot;-&quot;&quot;??_);_(@_)&quot;
+	.Interior.Color = RGB(0,0,255)
+End With">With Combo</button>
+
+
+						<button id="if_statements" class="btn-group2" style="width:100%; margin-top:5px;" onmousedown="if_statements_click()" onclick="closeme()" oncontextmenu="return false;">If Statements</button>
+								<button id="simpleif" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'This code says, If Cell(A1) > 100 Then, Do Something...
+If Range(&quot;A1&quot;) > 100 Then
+    'Place Your Code Here
+End if
+">Simple If</button>
+								<button id="ifand" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'This code says, If Cell(A1) > 100 And Cell B1 = Minnesota Then, Do Something...
+If Range(&quot;A1&quot;) > 100 AND Range(&quot;B1&quot;) = &quot;Minnesota&quot; Then
+    'Place Your Code Here
+End if
+">If And</button>
+								<button id="ifor" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'This code says, If Cell(A1) < 100 Or Cell B1 = Minnesota Then, Do Something...
+If Range(&quot;A1&quot;) < 100 OR Range(&quot;B1&quot;) = &quot;Minnesota&quot; Then
+    'Place Your Code Here
+End if
+">If Or</button>
+						<button id="loops" class="btn-group2" style="width:100%; margin-top:5px;" onmousedown="loops_click()" onclick="closeme()" oncontextmenu="return false;">Loops</button>
+								<button id="forloop" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'This code Loops through Range(A1:A10) and writes the current value of x in each cell
+For x = 1 to 10
+    Range(&quot;A&quot; & x) = x
+Next x
+">For Loop</button>
+								<button id="loopsheets" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Count the number of sheets in the workbook
+Sht_Count = Sheets.Count
+'Loop through each sheet and do something...
+For sht = 1 to Sht_Count
+    Worksheets(sht).Select
+	'Do Something...
+next sht
+">Loop Sheets</button>
+								<button id="whileloop" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'This code Loops while x is less than 5. If x < 5, then place messages in range
+x = 0
+While x < 5
+    Range(&quot;A&quot; & x) = &quot x is less than 5 &quot
+Wend
+">While Loop</button>
+						
+						
+						<button id="copy_paste" class="btn-group2" style="width:100%; margin-top:5px;" onmousedown="copy_paste_click()" onclick="closeme()" oncontextmenu="return false;">Copy/Paste</button>
+															<button id="withinsheet" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Copy the value in cell A1 and paste to cell C1
+Range(&quot;C1&quot;) = Range(&quot;A1&quot;).Value
+">Within Sheet</button>
+															<button id="betweensheets" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Copy the value on Sheet2 in Cell A1 and paste to Sheet1 cell A1
+Sheet1.Range(&quot;A1&quot;) = Sheet2.Range(&quot;A1&quot;)
+">Between Sheets</button>
+															<button id="betweenworkbooks" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Copy the value in wWrkbookA on Sheet2 in Cell A1 and paste to WorkbookB Sheet1 cell A1
+Workbooks(&quot;WorkbookB.xlsx&quot;).Sheet1.Range(&quot;A1&quot;) = Workbooks(&quot;WorkbookA.xlsx&quot;)Sheet2.Range(&quot;A1&quot;)
+">Between Workbooks</button>
+						
+						
+						
+						<button id="speed_enhancements" class="btn-group2" style="width:100%; margin-top:5px;" onmousedown="speed_enhancements_click()" onclick="closeme()" oncontextmenu="return false;">Speed Enhancements</button>
+															<button id="screenfalse" class="btn-group4" style="text-align:center; width:40%;font-size: 10px;  height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Speeds up code by disabling screen updating (place at beginning of code)
+Application.ScreenUpdating = False
+">ScreenUpdating = False</button>
+															<button id="screentrue" class="btn-group4" style="text-align:center; width:40%; font-size: 10px; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Speeds up code by disabling screen updating (place at end of code)
+Application.ScreenUpdating = True">ScreenUpdating = True</button>						
+
+
+
+						<button id="essentials" class="btn-group2" style="width:100%; margin-top:5px;" onmousedown="essentials_click()" onclick="closeme()" oncontextmenu="return false;">Special</button>
+															<button id="lrow" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Finds the last row of Column A. The number 1 = A, 2 = B, 3 = C...
+dim lrow as long
+lrow = Cells(Rows.Count, 1).End(xlUp).Row
+">Find Last Row</button>
+															<button id="lcol" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Finds the last row of Column A. The number 1 = row 1, 2 = row 2...
+dim lcol as long
+lcol = Cells(1, Columns.Count).End(xltoLeft).Column
+">Find Last Column</button>
+															<button id="removeduplicates" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; font-size:10px; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Remove duplicates from Range A1 to A100
+'Columns:=1 means that you are removing duplicates if they are in 1st column of the range (A)
+'Header:=Yes means that your range includes headers
+Range(&quot;A$1:$A$100&quot;).RemoveDuplicates Columns:=1, Header:=xlYes
+">Remove Duplicates (1 Column)</button>
+															<button id="removeduplicates2" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; font-size:10px; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Remove duplicates from Range A1 to B100
+'Columns:=Array(1, 2), means that you are removing duplicates if they are in the 1st and 2nd column of the range (A:B)
+'Header:=Yes means that your range includes headers
+ActiveSheet.Range(&quot;$A$1:$B$100$&quot;).RemoveDuplicates Columns:=Array(1, 2), Header:=xlYes
+">Remove Duplicates (2+ Columns)</button>
+						
+						
+						
+						<button id="formulas" class="btn-group2" style="width:100%; margin-top:5px;" onmousedown="formulas_click()" onclick="closeme()" oncontextmenu="return false;">Formulas</button>
+															<button id="myif" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'If Statement placed in range B2:B100. To place in a cell, replace B2:B100 with B2.
+'(RC1>5) means that if the current row in column 1 is greater than 5, then...
+'If true, then say &quot;Greater than 5&quot;.
+'If fales, then say nothing (blank)
+Range(&quot;B2:B100&quot;).FormulaR1C1 = &quot;=IF(RC1>5,&quot;&quot;Greater than 5&quot;&quot;,&quot;&quot;&quot;&quot;)&quot;
+">If</button>		
+															<button id="sumifs" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Place Sumifs equation in cell E2
+'Sum Range is C1, known as Column 1 or Column A
+'Criteria Range 1 is C2, known as Column 2, or Column B.
+'&quot;X&quot; is the criteria. The equation will sum up Column A when Column B = X.
+Range(&quot;E2&quot;).FormulaR1C1 = &quot;=SUMIFS(C1,C2,&quot;&quot;X&quot;&quot;)&quot;
+">Sumifs</button>													
+															<button id="vlookup" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Vlookup placed in range E2. To place formula in Range, replace E2 with E2:E5
+'(RC4) lookup is in the current row and fourth column in. (D2)
+'(R1C1:R11C2) table is in the range (A1:B11)
+'2 represents the column index number (return value)
+'False means that you are looking for an exact match
+Range(&quot;E2&quot;).FormulaR1C1 = &quot;=VLOOKUP(RC4,R1C1:R11C2,2,FALSE)&quot;
+">Vlookup</button>
+															<button id="match" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Match placed in range C2:C10. To place formula in cell, replace C2:C10 with C2.
+'(RC2) lookup is in the current row and second column in. (B2)
+'(R1C1:R11C2) table is in range (A1:B11)
+'0 means that you are looking for an exact match
+Range(&quot;C2:C10&quot;).FormulaR1C1 = &quot;=MATCH(RC2,R1C1:R11C1,0)&quot;
+">Match</button>
+
+															<button id="indexmatch" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Place Index Match in cell F3
+'Index/Table is R1C1:R11C4 (A1:D11)
+'MATCH: Row_Num Value is in cell RC5 (E3)
+'MATCH: Row_Num Lookup Table is R1C11:R11C1 (A1:A11)
+'Exact Match (0)
+'Return the value in the second column of the Index table (2)
+Range(&quot;F3&quot;).FormulaR1C1 = &quot;=INDEX(R1C1:R11C4,MATCH(RC5,R1C1:R11C1,0),2,1)&quot;
+">Index Match</button>					
+			
+															<button id="indexmatchmatch" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; font-size: 10px; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Place Index Match in cell F3
+'Index/Table is R1C1:R11C4 (A1:D11)
+'MATCH1: Row_Num Match Value is in cell RC5 (E3)
+'MATCH1: Row_Num Lookup Table is R1C11:R11C1 (A1:A11)
+'Exact Match (0)
+'MATCH2: Column_Num Match Value is in cell R2C (F2)
+'MATCH2: Column_Num Lookup Table is R1C1:R11C4 (A1:D1)
+'Exact Match (0)
+Range(&quot;F4&quot;).FormulaR1C1 = &quot;=INDEX(R1C1:R11C4,MATCH(RC5,R1C1:R11C1,0),MATCH(R2C,R1C1:R1C4,0),1)&quot;
+">Index Match Match</button>						
+						
+						
+						<button id="combinations" class="btn-group2" style="width:100%; margin-top:5px;" onmousedown="combinations_click()" onclick="closeme()" oncontextmenu="return false;">Combinations</button>
+															<button id="combo1" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; font-size: 10px; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'The code below will copy and paste Columns A:C to Columns E:G when A = Minnesota
+'Used: screenupdating, find last row, for loop, if statement, and copy paste
+'Speeds up code by disabling screen updating (place at beginning of code)
+Application.ScreenUpdating = False
+'Finds the last row of Column A. The number 1 = A, 2 = B, 3 = C...
+Dim lrow As Long
+lrow = Cells(Rows.Count, 1).End(xlUp).Row
+'Create For Loop through 1 to lrow. My_row will equal a row number
+For my_row = 1 To lrow
+    'If Cell A & current row = Minnesota Then, Do Something...
+    If Range(&quot;A&quot; & my_row) = &quot;Minnesota&quot; Then
+        'Finds the last row of Column E. The number 1 = A, 2 = B, 3 = C...
+        Dim lrow As Long
+        lrow = Cells(Rows.Count, 5).End(xlUp).Row
+        'Copy and Paste the value from columns A:C to E:G
+        Range(&quot;E&quot; & lrow2 & &quot;:G&quot; & lrow2) = Range(&quot;A&quot; & x & &quot;:C&quot; & x).Value
+    End If
+Next x
+'Speeds up code by disabling screen updating (place at end of code)
+Application.ScreenUpdating = True
+">Loop & If & Copy/Paste</button>
+	
+						
+
+						
+						
+					</div>
+					<div id="dropdowns2" class="btn-group2" style="display: none">
+						<button id="delete_blank_rows" class="btn-group2" onclick="delete_blank_rows_click()"style="width:100%; margin-top:5px;">Delete Rows If</button>
+						
+															<button id="brsheet" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Delete All Blank Rows from the active sheet
+'Speeds up code by disabling screen updating (place at beginning of code)
+Application.ScreenUpdating = False
+'Finds last row of Column A (1) in the active sheet
+lrow = Cells(Rows.Count, 1).End(xlUp).Row
+'Create a For Loop to go from the last row to the first row of the active sheet
+For my_row = lrow To 1 Step -1
+    'Counts if there are any values in the current row in the loop
+    count_row = Application.WorksheetFunction.CountA(Rows(my_row))
+    'If there are no values in the current row (count_row) then do something    
+    If count_row = 0 Then
+        'Delete the current row in the loop (my_row)
+        Rows(my_row).Delete
+    End If
+'Go to the next iteration of the loop
+Next my_row
+'Speeds up code by enabling screen updating (place at end of code)
+Application.ScreenUpdating = True
+">Blank in Sheet</button>
+															<button id="brworkbook" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)"  data-text="'Delete All Blank Rows from the active workbook
+''Speeds up code by disabling screen updating (place at beginning of code)
+Application.ScreenUpdating = False
+'Counts all of the sheets in the Active Workbook
+Sht_Count = Sheets.Count
+For sht = 1 to Sht_Count
+    'Selects the worksheet 1 through the number of worksheets you have
+    Worksheets(sht).select
+    'Finds last row of Column A (1) in the active sheet
+    lrow = Cells(Rows.Count, 1).End(xlUp).Row
+    'Create a For Loop to go from the last row to the first row of the active sheet
+    For my_row = lrow To 1 Step -1
+        'Counts if there are any values in the current row in the loop
+        count_row = Application.WorksheetFunction.CountA(Rows(my_row))
+        'If there are no values in the current row (count_row) then do something    
+        If count_row = 0 Then
+            'Delete the current row in the loop (my_row)
+            Rows(x).Delete
+        End If
+    Next my_row
+Next sht
+'Speeds up code by enabling screen updating (place at end of code)
+Application.ScreenUpdating = True
+">Blank in Workbook</button>
+															<button id="brfolder" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)" data-text="'Delete All Blank Rows from the selected folder
+'Recommended that you place all files that need to have blank rows deleted here.
+'Opens File Dialog box for you to select a file/path
+With Application.FileDialog(msoFileDialogFolderPicker)
+    .AllowMultiSelect = False
+    .Show
+    MyFolder = .SelectedItems(1)
+End With
+'Speeds up code by disabling screen updating (place at beginning of code)
+Application.ScreenUpdating = False
+'Make the file a vb read only. (Makes code run faster)
+MyFile = Dir(MyFolder & &quot;\&quot;, vbReadOnly)
+'Run the code as long as there is a file name
+Do While MyFile <> &quot;&quot;
+    'Do not update links (if there are any). Speeds up code.
+    Workbooks.Open Filename:=MyFolder & &quot;\&quot; & MyFile, UpdateLinks:=False
+    'Counts all of the sheets in the Active Workbook
+    Sht_Count = Sheets.Count
+    'Creates a loop for the first to the last sheet of the workbook
+    For sht = 1 To Sht_Count
+        'Selects the current worksheet # (sht) worksheet in the workbook
+        Worksheets(sht).Select
+        'Finds last row of Column A (1) in the active sheet
+        lrow = Cells(Rows.Count, 1).End(xlUp).Row
+        'Create a For Loop to go from the last row to the first row of the active sheet
+        For my_row = lrow To 1 Step -1
+            'Counts if there are any values in the current row in the loop
+            count_row = Application.WorksheetFunction.CountA(Rows(my_row))
+            'If there are no values in the current row (count_row) then do something
+            If count_row = 0 Then
+                'Delete the current row in the loop (my_row)
+                Rows(my_row).Delete
+            'End the Count if Statement
+            End If
+        'Go to the next row on the current sheet
+        Next my_row
+    'Go to the next sheet in the current workbook
+    Next sht
+    'Save changes to the workbook and close it
+    Workbooks(MyFile).Close savechanges:=True
+    'Set file back to Dir
+    MyFile = Dir
+Loop
+'Speeds up code by enabling screen updating (place at end of code)
+Application.ScreenUpdating = True
+">Blank in Folder</button>
+															<button id="columnequals" class="btn-group4" style="text-align:center; width:40%; height: 50px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)"  data-text="'Delete All Rows where Column B = &quot;Canada&quot;
+'Find the last row of column 1
+Dim lrow As Long
+lrow = Cells(Rows.Count, 1).End(xlUp).Row
+'create a loop from the last row to the first row
+For Row_No = lrow To 1 Step -1
+    'create variable country_name and make it equal to Column B and the current loop row
+    country_name = Range(&quot;B&quot; & Row_No)
+    'If the value of column B and the current row = &quot;Canada&quot; then do something
+    If country_name = &quot;Canada&quot; Then
+        'Delete the current row number
+        Rows(Row_No).Delete
+    'End the if statement
+    End If
+'Got to next row
+Next Row_No
+">Column Equals</button>
+						
+						
+						<button id="common" class="btn-group2" onclick="common_click()"style="width:100%; margin-top:5px;">Common</button>
+															<button id="createsheets" class="btn-group4" style="text-align:center; width:40%; height: 50px; font-size: 10px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)"  data-text="'This code will do the following:
+'Take a sheet of data and split out categories into their own sheets
+    'Example: In Column B you have 3 categories: A, B, and C
+    'These categories in the code are located in Column B.
+    'The dataset goes from Column A to Column Y
+'The following code will create three sheets called A, B, and C
+'Each of those sheets will only include data that pertains to the category
+'Speeds up code by disabling screen updating (place at beginning of code)
+Application.ScreenUpdating = False
+'Find the last row of your first sheet
+Dim lrow As Long
+lrow = Sheet1.Cells(Rows.Count, 1).End(xlUp).Row
+'Begin a loop from row 1 to the last row of sheet1
+For x = 1 To lrow
+    'Create a string based on the cell value of sheet1 range A1
+    my_string = Sheet1.Range(&quot;B&quot; & x).Value
+    'Count the number of sheets in the current workbook
+    count_shts = ActiveWorkbook.Sheets.Count
+    'Create a loop from 1 to the number of sheets in the workbook
+    For y = 1 To count_shts
+        'If the current worksheet name in the loop equals the cell value in sheet 1 range A and current row, do something
+        If Worksheets(y).Name = my_string Then
+            'Find the last row for the sheet that relates to the value in sheet 1 range A and current row
+            cur_lrow = Worksheets(y).Cells(Rows.Count, 1).End(xlUp).Row + 1
+            'Copying the value in sheet 1 range A and current row and pasting in the current worksheet's range A and last row
+            Worksheets(y).Range(&quot;A&quot; & cur_lrow & &quot;:Y&quot; & cur_lrow) = Sheet1.Range(&quot;A&quot; & x & &quot;:Y&quot; & x).Value
+            'Jump to the next_x: in the code
+            GoTo next_x:
+        'End the If Statement
+        End If
+    'Go to the next sheet in the workbook
+    Next y
+'If the value in A and row does not equal a current sheet name, create a new sheet at the end of the workbook and name it the search value
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = my_string
+'Give the new sheet a Header
+Sheets(my_string).Range(&quot;A1:Y1&quot;) = Sheet1.Range(&quot;C1:Y1&quot;).Value
+'Find the last row of the new sheet created and add one for pasting purposes
+cur_lrow = Sheets(my_string).Cells(Rows.Count, 1).End(xlUp).Row + 1
+'Copying the value in sheet 1 range A and current row and pasting in the current worksheet's range A and last row
+Sheets(my_string).Range(&quot;A&quot; & cur_lrow & &quot;:Y&quot; & cur_lrow) = Sheet1.Range(&quot;C&quot; & x & &quot;:Y&quot; & x).Value
+'Do the next row in sheet1
+next_x:
+Next x
+'Speeds up code by disabling screen updating (place at end of code)
+Application.ScreenUpdating = True
+">Create Sheets from Data</button>	
+															<button id="savesheets" class="btn-group4" style="text-align:center; width:40%; height: 50px; font-size: 10px; margin-top:5px; margin-left: 20px; display: none; color: black; background-color:white; border: 1px solid black" draggable="true" ondragstart="drag(event)"  data-text="'This code will do the following:
+'Take a sheet of data and split out categories into their own sheets
+    'Example: In Column B you have 3 categories: A, B, and C
+    'These categories in the code are located in Column B.
+    'The dataset goes from Column A to Column Y
+'The following code will create three sheets called A, B, and C
+'Each of those sheets will only include data that pertains to the category
+'Speeds up code by disabling screen updating (place at beginning of code)
+Application.ScreenUpdating = False
+'Find the last row of your first sheet
+Dim lrow As Long
+lrow = Sheet1.Cells(Rows.Count, 1).End(xlUp).Row
+'Begin a loop from row 1 to the last row of sheet1
+For x = 1 To lrow
+    'Create a string based on the cell value of sheet1 range A1
+    my_string = Sheet1.Range(&quot;B&quot; & x).Value
+    'Count the number of sheets in the current workbook
+    count_shts = ActiveWorkbook.Sheets.Count
+    'Create a loop from 1 to the number of sheets in the workbook
+    For y = 1 To count_shts
+        'If the current worksheet name in the loop equals the cell value in sheet 1 range A and current row, do something
+        If Worksheets(y).Name = my_string Then
+            'Find the last row for the sheet that relates to the value in sheet 1 range A and current row
+            cur_lrow = Worksheets(y).Cells(Rows.Count, 1).End(xlUp).Row + 1
+            'Copying the value in sheet 1 range A and current row and pasting in the current worksheet's range A and last row
+            Worksheets(y).Range(&quot;A&quot; & cur_lrow & &quot;:Y&quot; & cur_lrow) = Sheet1.Range(&quot;A&quot; & x & &quot;:Y&quot; & x).Value
+            'Jump to the next_x: in the code
+            GoTo next_x:
+        'End the If Statement
+        End If
+    'Go to the next sheet in the workbook
+    Next y
+'If the value in A and row does not equal a current sheet name, create a new sheet at the end of the workbook and name it the search value
+Sheets.Add(After:=Sheets(Sheets.Count)).Name = my_string
+'Give the new sheet a Header
+Sheets(my_string).Range(&quot;A1:Y1&quot;) = Sheet1.Range(&quot;C1:Y1&quot;).Value
+'Find the last row of the new sheet created and add one for pasting purposes
+cur_lrow = Sheets(my_string).Cells(Rows.Count, 1).End(xlUp).Row + 1
+'Copying the value in sheet 1 range A and current row and pasting in the current worksheet's range A and last row
+Sheets(my_string).Range(&quot;A&quot; & cur_lrow & &quot;:Y&quot; & cur_lrow) = Sheet1.Range(&quot;C&quot; & x & &quot;:Y&quot; & x).Value
+'Do the next row in sheet1
+next_x:
+Next x
+'Speeds up code by disabling screen updating (place at end of code)
+Application.ScreenUpdating = True
+">Save Sheets as Workbooks</button>	
+						
+						
+						
+						<button id="delete_blank_rows" class="btn-group2" onclick="excel_to_ppt_click()"style="width:100%; margin-top:5px;">Excel to Powerpoint</button>
+						
+						
+						
+						
+						
+						<button id="delete_blank_rows" class="btn-group2" onclick="excel_to_email_click()"style="width:100%; margin-top:5px;">Excel to Email</button>
+						
+						
+						
+						
+						
+					</div>
+				</div>
+			</div>
+			<div id="droppables" class="dropzone" >
+				<textarea id="mydropzone">Sub My_Code()
+
+
+
+End Sub</textarea>
+
+			</div>
+			<script>
+				var mydropzone = CodeMirror.fromTextArea
+				(document.getElementById('mydropzone'),{
+					mode: "vb",
+					theme: "idea",
+					lineNumbers: true
+				});
+				mydropzone.setSize("800","500");
+			</script>
+
+			</div>
+	</body>
+</html>
